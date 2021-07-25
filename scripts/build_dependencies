@@ -1,0 +1,13 @@
+# repo directory
+REPO=/home/aris/Development/scala-play-bazel-template
+BAZEL_DEPS=/home/aris/Development/bazel-deps
+
+# cd into bazel-deps directory
+cd $BAZEL_DEPS
+
+# bazel run
+bazel run //:parse generate -- --repo-root "$REPO" --sha-file 3rdparty/workspace.bzl --deps dependencies.yaml --target-file 3rdparty/target_file.bzl
+rm -rf $REPO/home
+
+# Fix syntax errors
+python $REPO/scripts/python/fix_dependencies.py

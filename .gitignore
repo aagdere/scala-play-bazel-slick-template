@@ -1,0 +1,13 @@
+*.class
+*.log
+
+# Bazel
+/bazel-*
+
+# IntelliJ
+/.idea/*
+!/.idea/misc.xml
+*.iml
+
+# Bazel Intellij
+.rig_sha1
