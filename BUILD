@@ -37,6 +37,9 @@ intellij_project(
         "//backend-server:backend-server_iml",
         "//bazeltest:bazeltest_iml",
         "//othermodule:othermodule_iml",
+        "//testrepo/services:testrepo_services_iml",
+        "//testrepo/api:testrepo_api_iml",
+        "//testrepo/models:testrepo_models_iml",
     ],
     project_root_filegroup = "//:automatically_placed_intellij_project_files",
     project_root_filegroup_ignore_prefix = "intellij_project_files",
@@ -45,6 +48,7 @@ intellij_project(
         "//backend-server",
         "//bazeltest:tests",
         "//othermodule:tests",
+        "//testrepo/services:tests",
     ],
 )
 
