@@ -1,10 +1,11 @@
 package com.armeneum.server
 
+import com.armeneum.testrepo.{ SlickTestRepository, TestRepository }
 import play.api._
 import play.api.ApplicationLoader.Context
 import play.api.routing.Router
 import play.filters.HttpFiltersComponents
-import com.armeneum.testrepo.{ SlickTestRepository, TestRepository }
+import slick.jdbc.JdbcBackend.Database
 
 class BackendServerLoader extends ApplicationLoader {
   def load(context: Context) = {
@@ -20,7 +21,9 @@ class MyComponents(context: Context)
     with HttpFiltersComponents
     with _root_.controllers.AssetsComponents {
 
-  lazy val testRepository: TestRepository = new SlickTestRepository()
+  val db: Database = Database.forConfig("postgres")
+
+  lazy val testRepository: TestRepository = new SlickTestRepository(db)
 
   lazy val homeController = new _root_.controllers.HomeController(testRepository)(controllerComponents)
 

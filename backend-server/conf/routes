@@ -5,5 +5,10 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
+# Player
+GET     /players/:id                 controllers.HomeController.getPlayerById(id: Long)
+GET     /players                     controllers.HomeController.getAllPlayers
+POST    /players                     controllers.HomeController.insertPlayer
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(file)

@@ -1,5 +1,5 @@
 # repo directory
-REPO=/home/aris/Development/scala-play-bazel-template
+REPO=/home/aris/Development/scala-play-bazel-slick-template
 BAZEL_DEPS=/home/aris/Development/bazel-deps
 
 # cd into bazel-deps directory

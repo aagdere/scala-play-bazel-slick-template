@@ -1,0 +1,1 @@
+psql -U aris -d postgres -a -f migrations/V1627961298_players.sql

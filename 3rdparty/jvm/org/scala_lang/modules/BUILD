@@ -1,12 +1,24 @@
 load("@io_bazel_rules_scala//scala:scala_import.bzl", "scala_import")
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library", "scala_binary", "scala_test")
 scala_import(
-    name = "scala_java8_compat",
+    name = "scala_async",
     exports = [
         "//3rdparty/jvm/org/scala_lang:scala_library"
     ],
     jars = [
-        "//external:jar/org/scala_lang/modules/scala_java8_compat_2_12"
+        "//external:jar/org/scala_lang/modules/scala_async_2_13"
+    ],
+    visibility = [
+        "//visibility:public"
+    ]
+)
+
+
+
+java_library(
+    name = "scala_collection_compat_2_13",
+    exports = [
+        "//3rdparty/jvm/org/scala_lang:scala_library",
+        "//external:jar/org/scala_lang/modules/scala_collection_compat_2_13"
     ],
     visibility = [
         "//3rdparty/jvm:__subpackages__"
@@ -15,10 +27,11 @@ scala_import(
 
 
 
-scala_library(
-    name = "scala_parser_combinators",
+java_library(
+    name = "scala_java8_compat_2_13",
     exports = [
-        "@io_bazel_rules_scala_scala_parser_combinators//:io_bazel_rules_scala_scala_parser_combinators"
+        "//3rdparty/jvm/org/scala_lang:scala_library",
+        "//external:jar/org/scala_lang/modules/scala_java8_compat_2_13"
     ],
     visibility = [
         "//3rdparty/jvm:__subpackages__"
@@ -27,10 +40,24 @@ scala_library(
 
 
 
-scala_library(
-    name = "scala_xml",
+java_library(
+    name = "scala_parser_combinators_2_13",
     exports = [
-        "@io_bazel_rules_scala_scala_xml//:io_bazel_rules_scala_scala_xml"
+        "//3rdparty/jvm/org/scala_lang:scala_library",
+        "//external:jar/org/scala_lang/modules/scala_parser_combinators_2_13"
+    ],
+    visibility = [
+        "//3rdparty/jvm:__subpackages__"
+    ]
+)
+
+
+
+java_library(
+    name = "scala_xml_2_13",
+    exports = [
+        "//3rdparty/jvm/org/scala_lang:scala_library",
+        "//external:jar/org/scala_lang/modules/scala_xml_2_13"
     ],
     visibility = [
         "//3rdparty/jvm:__subpackages__"

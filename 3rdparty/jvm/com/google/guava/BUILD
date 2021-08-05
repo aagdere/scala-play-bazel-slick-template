@@ -1,5 +1,4 @@
 load("@io_bazel_rules_scala//scala:scala_import.bzl", "scala_import")
-load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library", "scala_binary", "scala_test")
 java_library(
     name = "failureaccess",
     exports = [
@@ -19,7 +18,6 @@ java_library(
         "//3rdparty/jvm/com/google/errorprone:error_prone_annotations",
         "//3rdparty/jvm/com/google/j2objc:j2objc_annotations",
         "//3rdparty/jvm/org/checkerframework:checker_qual",
-        "//3rdparty/jvm/org/codehaus/mojo:animal_sniffer_annotations",
         "//external:jar/com/google/guava/guava",
         ":failureaccess",
         ":listenablefuture"

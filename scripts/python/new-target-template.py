@@ -1,4 +1,4 @@
-repo = "/home/aris/Development/scala-play-bazel-template"
+repo = "/home/aris/Development/scala-play-bazel-slick-template"
 
 import os
 

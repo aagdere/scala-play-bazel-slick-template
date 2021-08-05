@@ -23,6 +23,7 @@ scala_binary(
     ],
     main_class = "play.core.server.ProdServerStart",
     resources = ["conf/logback.xml"] + glob(["conf/resources/**/*"]),
+    scalacopts = ["-Xasync"],
     visibility = ["//visibility:public"],
     deps = [
         "//3rdparty/jvm/com/typesafe/play",
@@ -30,6 +31,10 @@ scala_binary(
         "//3rdparty/jvm/com/typesafe/play:play_akka_http_server",
         "//3rdparty/jvm/com/typesafe/play:play_logback",
         "//3rdparty/jvm/com/typesafe/play:routes_compiler",
+        "//3rdparty/jvm/com/typesafe/slick:slick_hikaricp",
+        "//3rdparty/jvm/joda_time",
+        "//3rdparty/jvm/org/postgresql",
+        "//3rdparty/jvm/org/scala_lang/modules:scala_async",
         "//bazeltest",
         "//external:jar/com/google/inject/guice",
         "//external:jar/javax/inject/javax_inject",

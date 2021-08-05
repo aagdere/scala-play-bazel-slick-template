@@ -5,7 +5,10 @@ scala_library(
     name = "models",
     srcs = ["src/main/scala/com/armeneum/testrepo/package.scala"],
     visibility = ["//visibility:public"],
-    deps = [],
+    deps = [
+        "//3rdparty/jvm/com/typesafe/slick",
+        "//3rdparty/jvm/joda_time",
+    ],
 )
 
 intellij_module(
