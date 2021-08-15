@@ -32,3 +32,6 @@ clean-3rdparty: ## Deletes 3rdparty dependency folder
 
 new-target-template: ## Creates template bazel module
 	python ./scripts/python/new-target-template.py
+
+run-migrations: ## Runs all migrations in $ROOT/postgres/migrations/
+	./postgres/runMigrations.sh

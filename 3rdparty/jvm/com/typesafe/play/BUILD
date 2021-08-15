@@ -53,7 +53,7 @@ scala_import(
         "//3rdparty/jvm/org/slf4j:jul_to_slf4j",
         "//3rdparty/jvm/org/slf4j:slf4j_api",
         ":build_link",
-        ":play_json_2_13",
+        ":play_json",
         ":play_streams_2_13",
         ":twirl_api_2_13"
     ],
@@ -111,25 +111,7 @@ java_library(
 
 
 scala_import(
-    name = "play_guice",
-    exports = [
-        "//3rdparty/jvm/com/google/inject/extensions:guice_assistedinject",
-        "//3rdparty/jvm/com/google/inject:guice",
-        "//3rdparty/jvm/org/scala_lang:scala_library",
-        ":play"
-    ],
-    jars = [
-        "//external:jar/com/typesafe/play/play_guice_2_13"
-    ],
-    visibility = [
-        "//visibility:public"
-    ]
-)
-
-
-
-java_library(
-    name = "play_json_2_13",
+    name = "play_json",
     exports = [
         "//3rdparty/jvm/com/fasterxml/jackson/core:jackson_annotations",
         "//3rdparty/jvm/com/fasterxml/jackson/core:jackson_core",
@@ -139,11 +121,13 @@ java_library(
         "//3rdparty/jvm/joda_time:joda_time",
         "//3rdparty/jvm/org/scala_lang:scala_library",
         "//3rdparty/jvm/org/scala_lang:scala_reflect",
-        "//external:jar/com/typesafe/play/play_json_2_13",
         ":play_functional_2_13"
     ],
+    jars = [
+        "//external:jar/com/typesafe/play/play_json_2_13"
+    ],
     visibility = [
-        "//3rdparty/jvm:__subpackages__"
+        "//visibility:public"
     ]
 )
 
@@ -176,7 +160,7 @@ scala_import(
         "//external:jar/com/typesafe/play/play_server_2_13"
     ],
     visibility = [
-        "//3rdparty/jvm:__subpackages__"
+        "//visibility:public"
     ]
 )
 

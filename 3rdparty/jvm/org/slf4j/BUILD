@@ -31,19 +31,6 @@ java_library(
         "//external:jar/org/slf4j/slf4j_api"
     ],
     visibility = [
-        "//3rdparty/jvm:__subpackages__"
-    ]
-)
-
-
-
-java_library(
-    name = "slf4j_nop",
-    exports = [
-        "//external:jar/org/slf4j/slf4j_nop",
-        ":slf4j_api"
-    ],
-    visibility = [
         "//visibility:public"
     ]
 )

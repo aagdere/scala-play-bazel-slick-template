@@ -5,14 +5,21 @@ scala_library(
     name = "services",
     srcs = ["src/main/scala/com/armeneum/testrepo/SlickTestRepository.scala"],
     visibility = ["//visibility:public"],
-    deps = ["//testrepo/api"],
+    deps = [
+        "//testrepo/api",
+    ],
 )
 
 scala_test(
     name = "tests",
     srcs = ["src/test/scala/com/armeneum/testrepo/SlickTestRepositorySpec.scala"],
+    resources = ["src/test/resources/reference.conf"],
     visibility = ["//visibility:public"],
-    deps = [":services"],
+    deps = [
+        ":services",
+        "//3rdparty/jvm/com/typesafe/slick:slick_hikaricp",
+        "//3rdparty/jvm/org/postgresql",
+    ],
 )
 
 intellij_module(

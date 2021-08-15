@@ -16,6 +16,11 @@ options:
   versionConflictPolicy: highest
 
 dependencies:
+  com.github.tminglei:
+    slick-pg:
+      version: 0.19.7
+      lang: scala
+
   com.typesafe.akka:
     akka-http:
       lang: scala
@@ -25,10 +30,21 @@ dependencies:
     play:
       lang: scala
       version: "2.8.8"
-      modules: [ '', akka-http-server, guice, logback ]
     routes-compiler:
       lang: scala
       version: "2.8.8"
+    play-akka-http-server:
+      version: 2.8.8
+      lang: scala
+    play-json:
+      version: 2.8.1
+      lang: scala
+    play-server:
+      version: 2.8.8
+      lang: scala
+    play-logback:
+      version: 2.8.8
+      lang: scala
     filters-helpers:
       version: "2.8.8"
       lang: scala
@@ -67,15 +83,20 @@ dependencies:
       version: 1.0.0
       lang: scala
 
+  org.scalactic:
+    scalactic:
+      version: 3.2.9
+      lang: scala
+
   org.scalatest:
     scalatest:
       lang: scala
       version: "3.0.8"
 
   org.slf4j:
-    slf4j-nop:
+    slf4j-api:
+      version: 1.7.22
       lang: java
-      version: "1.6.4"
 
 #replacements:
 #  org.scala-lang:
