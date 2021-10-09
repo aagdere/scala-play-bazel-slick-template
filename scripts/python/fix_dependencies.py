@@ -1,4 +1,4 @@
-repo = "/home/aris/Development/scala-play-bazel-slick-template"
+from config import *
 
 # (old, new, filename)
 replacements = [

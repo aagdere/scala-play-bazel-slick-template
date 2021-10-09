@@ -1,6 +1,5 @@
-repo = "/home/aris/Development/scala-play-bazel-slick-template"
-
 import os
+from config import *
 
 def generateScalaTest(moduleName, targetName):
     test = ""

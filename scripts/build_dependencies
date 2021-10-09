@@ -1,6 +1,6 @@
 # repo directory
-REPO=/home/aris/Development/scala-play-bazel-slick-template
-BAZEL_DEPS=/home/aris/Development/bazel-deps
+REPO=$(pwd)
+BAZEL_DEPS=$(pwd)/../bazel-deps
 
 # cd into bazel-deps directory
 cd $BAZEL_DEPS
@@ -10,4 +10,4 @@ bazel run //:parse generate -- --repo-root "$REPO" --sha-file 3rdparty/workspace
 rm -rf $REPO/home
 
 # Fix syntax errors
-python $REPO/scripts/python/fix_dependencies.py
+python3 $REPO/scripts/python/fix_dependencies.py

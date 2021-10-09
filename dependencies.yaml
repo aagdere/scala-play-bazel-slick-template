@@ -9,9 +9,9 @@ options:
     - id: "mavencentral"
       type: "default"
       url: https://repo.maven.apache.org/maven2/
-    - id: "hmrc"
-      type: "default"
-      url: https://hmrc.bintray.com/releases
+#    - id: "hmrc"
+#      type: "default"
+#      url: https://hmrc.bintray.com/releases
   transitivity: exports
   versionConflictPolicy: highest
 
