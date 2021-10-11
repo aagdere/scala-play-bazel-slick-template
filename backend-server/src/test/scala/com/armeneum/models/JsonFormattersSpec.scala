@@ -36,5 +36,4 @@ class JsonFormattersSpec extends AnyFlatSpec {
 
     assert(dateTimeOriginal === dateTimeAfterMapper)
   }
-
 }

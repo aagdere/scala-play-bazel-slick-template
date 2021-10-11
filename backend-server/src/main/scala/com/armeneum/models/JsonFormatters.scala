@@ -58,18 +58,7 @@ object JsonFormatters {
       "dob"     -> playerRow.dob.map(_.toString)
     )
 
-  val longWriteable: Writeable[Long] = {
-    val longWrites: Writes[Long] = long => JsNumber(long)
-    val contentType              = ContentTypeOf[Long](Some(ContentTypes.JSON))
-    val transform                = Writeable.writeableOf_JsValue.transform.compose(longWrites.writes)
-    Writeable(transform)(contentType)
-  }
-
-  val playerWriteable: Writeable[PlayerRow] = {
-    val contentType = ContentTypeOf[PlayerRow](Some(ContentTypes.JSON))
-    val transform   = Writeable.writeableOf_JsValue.transform.compose(playerWrites.writes)
-    Writeable(transform)(contentType)
-  }
+  val longWrites: Writes[Long] = long => JsNumber(long)
 
   implicit class WritesHelper[A](writes: Writes[A]) {
     def toListWrites(): Writes[List[A]] = {

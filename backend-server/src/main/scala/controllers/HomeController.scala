@@ -31,7 +31,7 @@ class HomeController(
       async {
         val playerToInsert          = request.body
         val insertResult: PlayerRow = await(testRepo.insertPlayer(playerToInsert))
-        Ok(insertResult.id)(longWriteable)
+        Ok(insertResult.id)(longWrites.toWriteable())
       }
     }
 
@@ -40,7 +40,7 @@ class HomeController(
       async {
         val playerOpt: Option[PlayerRow] = await(testRepo.getPlayerById(id))
         playerOpt match {
-          case Some(player) => Ok(player)(playerWriteable)
+          case Some(player) => Ok(player)(playerWrites.toWriteable())
           case None         => NotFound
         }
       }
@@ -51,8 +51,8 @@ class HomeController(
       async {
         val playerList: List[PlayerRow] = await(testRepo.getAllPlayers())
         implicit val playerListWriteable: Writeable[List[PlayerRow]] = playerWrites
-          .wrapWithResult()
           .toListWrites()
+          .wrapWithResult()
           .toWriteable()
         Ok(playerList)
       }
