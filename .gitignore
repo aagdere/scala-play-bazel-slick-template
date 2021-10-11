@@ -11,3 +11,6 @@
 
 # Bazel Intellij
 .rig_sha1
+
+# Python
+__pycache__/

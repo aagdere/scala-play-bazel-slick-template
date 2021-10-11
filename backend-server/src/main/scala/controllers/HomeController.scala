@@ -2,6 +2,8 @@ package controllers
 
 import com.armeneum.testrepo.{ PlayerInsertRequest, PlayerRow, TestRepository }
 import com.armeneum.models.JsonFormatters._
+import play.api.http.Writeable
+import play.api.libs.json.Json
 import play.api.mvc._
 
 import scala.async.Async.{ async, await }
@@ -13,7 +15,6 @@ class HomeController(
     testRepo: TestRepository
 )(val controllerComponents: ControllerComponents)(implicit ec: ExecutionContext)
     extends BaseController {
-  import HomeController._
 
   /** Create an Action to render an HTML page.
     *
@@ -49,7 +50,11 @@ class HomeController(
     Action.async { _ =>
       async {
         val playerList: List[PlayerRow] = await(testRepo.getAllPlayers())
-        Ok(playerList)(listWriteable(playerWrites))
+        implicit val playerListWriteable: Writeable[List[PlayerRow]] = playerWrites
+          .wrapWithResult()
+          .toListWrites()
+          .toWriteable()
+        Ok(playerList)
       }
     }
 }

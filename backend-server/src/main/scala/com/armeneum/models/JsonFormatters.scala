@@ -71,11 +71,19 @@ object JsonFormatters {
     Writeable(transform)(contentType)
   }
 
-  def listWriteable[A](singleWrites: Writes[A]): Writeable[List[A]] = {
-    implicit val iWrites: Writes[A] = singleWrites
-    val listWrites                  = Writes.iterableWrites2[A, List[A]]
-    val contentType                 = ContentTypeOf[List[A]](Some(ContentTypes.JSON))
-    val transform                   = Writeable.writeableOf_JsValue.transform.compose(listWrites.writes)
-    Writeable(transform)(contentType)
+  implicit class WritesHelper[A](writes: Writes[A]) {
+    def toListWrites(): Writes[List[A]] = {
+      implicit val iWrites: Writes[A] = writes
+      Writes.iterableWrites2[A, List[A]]
+    }
+
+    def toWriteable(): Writeable[A] = {
+      val contentType = ContentTypeOf[A](Some(ContentTypes.JSON))
+      val transform   = Writeable.writeableOf_JsValue.transform.compose(writes.writes)
+      Writeable(transform)(contentType)
+    }
+
+    def wrapWithResult(): Writes[A] =
+      writes.transform(jsValue => Json.obj("result" -> jsValue))
   }
 }
